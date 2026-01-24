@@ -131,18 +131,20 @@ NO  → modules/
 If `shared/` grows large, consider:
 
 1. **Grouping by domain** (still within shared):
-   ```plaintext
-   shared/
-   ├── date/          # All date-related utils
-   ├── string/        # String manipulation
-   └── form/          # Form utilities
-   ```
+
+    ```plaintext
+    shared/
+    ├── date/          # All date-related utils
+    ├── string/        # String manipulation
+    └── form/          # Form utilities
+    ```
 
 2. **Extracting to internal package** (for monorepos):
-   ```plaintext
-   packages/
-   └── common-utils/  # Becomes a proper package
-   ```
+
+    ```plaintext
+    packages/
+    └── common-utils/  # Becomes a proper package
+    ```
 
 ---
 
