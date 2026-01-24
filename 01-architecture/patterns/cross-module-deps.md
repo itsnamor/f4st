@@ -21,16 +21,19 @@ When module A needs something from module B, consider these options in order:
 If the functionality is generic enough, move it to `shared/`.
 
 **Before:**
+
 ```plaintext
 modules/auth/utils/validate-email.ts  ← used by modules/checkout
 ```
 
 **After:**
+
 ```plaintext
 shared/validators/is-email.ts  ← used by both modules
 ```
 
 **When to extract:**
+
 - The code has no business logic
 - It could work in any project
 - Multiple modules need it
@@ -54,6 +57,7 @@ export function CheckoutForm() {
 ```
 
 **Rules:**
+
 - Always import from index, never deep paths
 - Document significant dependencies
 - Watch for circular dependencies
@@ -81,17 +85,27 @@ This is forbidden.
 | Introduce third module | Need orchestration layer |
 | Use events/callbacks | Loose coupling needed |
 
-**Example - Extract:**
+**Example - Extract shared utility:**
 
 ```plaintext
 BEFORE (circular):
-auth/ uses getUserProfile from user/
-user/ uses isAuthenticated from auth/
+cart/ uses formatPrice() from checkout/
+checkout/ uses getCartTotal() from cart/
 
 AFTER (resolved):
-shared/types/user.type.ts      ← shared User type
-auth/                          ← auth logic only
-user/                          ← user logic only
+shared/utils/format-price.ts   ← extract generic formatter
+cart/                          ← uses shared formatter
+checkout/                      ← uses shared formatter, imports cart via public API
+```
+
+**Example - Merge modules:**
+
+```plaintext
+BEFORE (circular):
+auth/ ↔ user/   (tightly coupled, constantly importing each other)
+
+AFTER (resolved):
+modules/auth/   ← merge into one module, they're the same concern
 ```
 
 ---
@@ -154,6 +168,7 @@ npx madge --image graph.svg src/modules
 ```
 
 A healthy dependency graph:
+
 - Has clear direction (mostly top-down)
 - Has no cycles
 - Has few highly-connected nodes

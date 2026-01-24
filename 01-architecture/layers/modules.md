@@ -89,6 +89,7 @@ export type { User, AuthState, LoginCredentials } from './types/user.type'
 | Import types explicitly | `import type { User } from '@/modules/auth'` |
 
 **Never do:**
+
 ```typescript
 // ❌ Deep import - bypasses public interface
 import { useSession } from '@/modules/auth/hooks/use-session'
@@ -141,11 +142,11 @@ modules/billing/        → Billing feature
 A healthy module:
 
 ```plaintext
-□ All code serves a single, clear purpose
-□ Name accurately describes contents
-□ New developers understand scope quickly
-□ Changes are localized (rarely affect other modules)
-□ Can be explained in one sentence
+[ ] All code serves a single, clear purpose
+[ ] Name accurately describes contents
+[ ] New developers understand scope quickly
+[ ] Changes are localized (rarely affect other modules)
+[ ] Can be explained in one sentence
 ```
 
 ---
@@ -158,9 +159,8 @@ A healthy module:
 | `hooks/` | Custom hooks |
 | `utils/` | Module-specific utilities |
 | `types/` | TypeScript types/interfaces |
-| `api/` | API calls and data fetching |
 | `constants/` | Module-specific constants |
-| `context/` | React context (if needed) |
+| `store/` | State management (e.g., Redux, Zustand) |
 
 Not all modules need all categories. Start minimal, add as needed.
 

@@ -102,31 +102,33 @@ export type { DashboardConfig, Widget } from './types'
 
 ---
 
-## Nested Barrel Exports
+## One Barrel Per Module
 
-For larger modules, use intermediate barrels:
+Each module has exactly **one `index.ts`** at the root level. No nested barrels.
 
 ```plaintext
 modules/dashboard/
-├── index.ts                    # Main barrel
+├── index.ts                    # ← Only barrel file
 ├── components/
-│   ├── index.ts               # Components barrel
-│   ├── stat-card.tsx
+│   ├── stat-card.tsx          # No index.ts here
 │   └── activity-feed.tsx
 └── hooks/
-    ├── index.ts               # Hooks barrel
-    └── use-dashboard-data.ts
+    └── use-dashboard-data.ts   # No index.ts here
 ```
 
 ```typescript
-// modules/dashboard/components/index.ts
-export { StatCard } from './stat-card'
-export { ActivityFeed } from './activity-feed'
-
 // modules/dashboard/index.ts
-export { StatCard, ActivityFeed } from './components'
-export { useDashboardData } from './hooks'
+export { StatCard } from './components/stat-card'
+export { ActivityFeed } from './components/activity-feed'
+export { useDashboardData } from './hooks/use-dashboard-data'
 ```
+
+**Why no nested barrels:**
+
+- Forces modules to stay small and focused
+- Single source of truth for public API
+- Simpler mental model
+- If a module needs nested barrels, it's probably too big → split it
 
 ---
 
@@ -138,26 +140,6 @@ export { useDashboardData } from './hooks'
 | Deep imports allowed | Tight coupling, fragile code | Enforce index-only imports via ESLint |
 | No type exports | Consumers can't type their code | Always export necessary types |
 | Circular re-exports | Build errors, confusing dependencies | Review dependency graph |
-
----
-
-## ESLint Enforcement
-
-Use `eslint-plugin-import` to enforce barrel imports:
-
-```javascript
-// .eslintrc.js
-module.exports = {
-  rules: {
-    'import/no-internal-modules': [
-      'error',
-      {
-        allow: ['@/modules/*/index'],
-      },
-    ],
-  },
-}
-```
 
 ---
 
