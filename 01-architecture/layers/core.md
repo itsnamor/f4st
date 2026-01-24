@@ -15,19 +15,24 @@ The foundation layer containing all essential setup and configuration required t
 
 ## What Belongs Here
 
+Categories ordered by how commonly they appear in web applications:
+
 | Category | Examples |
 | -------- | -------- |
 | Routing | Router configuration, route definitions, navigation utilities |
+| API Layer | HTTP client, interceptors, generated queries/mutations/types/hooks |
+| UI | Component library setup, theme, extended components |
+| Styling | Theme tokens, global styles, CSS framework setup |
 | State Management | Store setup, state persistence, hydration logic |
-| API Layer | HTTP client configuration, interceptors, base URL setup |
-| Real-time | WebSocket client, connection management, reconnection logic |
-| Styling | Theme configuration, global styles, CSS framework setup |
-| UI Library | Component library configuration and customization |
 | Environment | Environment variables, feature flags, runtime config |
 | Error Handling | Global error boundaries, error reporting (Sentry, etc.) |
-| Logging | Logger instance, log level configuration |
-| Auth Infrastructure | Auth provider setup, token management |
 | i18n | Internationalization setup, locale configuration |
+| Analytics | Google Analytics, Mixpanel, Segment setup |
+| Real-time | WebSocket client, connection management, reconnection logic |
+| Performance | Web Vitals, monitoring setup |
+| Logging | Logger instance, log level configuration |
+
+> **Note:** Not all applications need every category. Start with what you need (often just Routing + API + UI).
 
 ---
 
@@ -36,23 +41,19 @@ The foundation layer containing all essential setup and configuration required t
 ```plaintext
 core/
 ├── api/
-│   ├── client.ts           # Axios/fetch instance with interceptors
+│   ├── client.ts           # API client instance
 │   └── index.ts
 ├── router/
-│   ├── router.tsx          # Router configuration
+│   ├── provider.tsx        # Router configuration
 │   ├── routes.ts           # Route definitions
 │   └── index.ts
 ├── store/
-│   ├── store.ts            # Redux/Zustand store setup
+│   ├── provider.ts         # Store setup
 │   └── index.ts
-├── theme/
-│   ├── theme.ts            # Theme tokens, colors, typography
-│   ├── global-styles.ts    # Global CSS
-│   └── index.ts
-├── auth/
-│   ├── auth-provider.tsx   # Auth context provider
-│   ├── token-manager.ts    # Token storage, refresh logic
-│   └── index.ts
+├── styles/
+│   ├── prose.css           # Typography styles
+│   ├── colors.css          # Color variables
+│   └── main.css            # Global CSS
 └── index.ts                # Re-exports all core modules
 ```
 
@@ -89,10 +90,10 @@ This allows core to use pure utilities from shared (e.g., custom cache strategie
 ## Checklist: Does This Belong in Core?
 
 ```plaintext
-□ Is it required for the app to run at all?
-□ Is it configured once and used everywhere?
-□ Is it independent of specific business features?
-□ Would removing it break the entire application?
+[ ] Is it required for the app to run at all?
+[ ] Is it configured once and used everywhere?
+[ ] Is it independent of specific business features?
+[ ] Would removing it break the entire application?
 
 All YES → core/
 Any NO  → Consider shared/ or modules/
@@ -104,9 +105,9 @@ Any NO  → Consider shared/ or modules/
 
 | Mistake | Why It's Wrong | Correct Approach |
 | ------- | -------------- | ---------------- |
-| Putting `useAuth()` hook in core | Hook contains business logic about user state | Put hook in `modules/auth`, keep only provider in core |
 | API endpoints in core | Endpoints are feature-specific | Keep base client in core, endpoints in modules |
 | Feature flags logic in core | Business rules about features | Config in core, logic in modules |
+| Business components in core/ui | UI primitives should be generic | Keep `Button`, `Modal` in core; `OrderCard` in modules |
 
 ---
 
