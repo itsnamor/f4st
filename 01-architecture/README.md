@@ -1,31 +1,82 @@
-# Modern web application architecture
+# Architecture Overview
 
-## Overview
-
-This document proposes an architectural methodology for modern web applications. The approach is framework-agnostic, though examples use React for illustration.
-
-### Goals
-
-1. **Fast onboarding** - New team members can understand and contribute quickly with minimal learning curve. The structure should be intuitive enough that developers can locate code and understand boundaries without extensive documentation.
-
-2. **Long-term maintainability** - Structure supports stable growth and scaling without accumulating technical debt. Changes in one area should have minimal impact on other areas. The architecture should remain consistent as the application grows from small to large scale.
+This document describes the architectural foundation for our web applications.
 
 ---
 
-## Architecture Layers
+## Goals
 
-The application consists of three layers with a unidirectional dependency flow.
+1. **Fast onboarding** - New developers understand the codebase quickly
+2. **Long-term maintainability** - Structure scales without accumulating debt
+
+---
+
+## Core Concept
+
+The application is organized into **three layers** with a strict dependency flow:
 
 ```plaintext
 ┌─────────────────────────────────────────┐
-│              modules/                   │  Layer 2 - Project-specific
+│              modules/                   │  Feature code (business logic)
 ├─────────────────────────────────────────┤
-│              shared/                    │  Layer 1 - Reusable utilities
+│               core/                     │  Foundation & configuration
 ├─────────────────────────────────────────┤
-│               core/                     │  Layer 0 - Foundation
+│              shared/                    │  Pure utilities (no dependencies)
 └─────────────────────────────────────────┘
+
+        ↓ Dependencies flow downward only ↓
 ```
 
-The dependency rule is strict: upper layers can import from lower layers, but lower layers must never import from upper layers. This ensures that foundational code remains stable and changes flow predictably through the system.
+**The Rule:** Upper layers can import from lower layers. Lower layers cannot import from upper layers.
+
+- `modules/` → can import from `core/` and `shared/`
+- `core/` → can import from `shared/` only
+- `shared/` → imports from nothing (completely portable)
 
 ---
+
+## Layers at a Glance
+
+| Layer | Purpose | Changes | Examples |
+| --- | --- | --- | --- |
+| **Modules** | Business features | Frequently | `auth`, `dashboard`, `checkout`, `notifications` |
+| **Core** | Foundation setup, external integrations | Rarely | Router, API client, theme, UI components |
+| **Shared** | Pure utilities, no dependencies | Occasionally | `formatDate()`, `useDebounce()`, `isEmail()` |
+
+> **Detailed documentation:** See [layers/](./layers/) for in-depth explanation of each layer.
+
+---
+
+## Quick Decision Guide
+
+```plaintext
+Where does my code belong?
+
+ ┌─ Is it pure utility with NO dependencies?
+ │   └─ YES → shared/
+ │
+ ├─ Is it project setup or external service config?
+ │   └─ YES → core/
+ │
+ └─ Is it tied to business logic or features?
+     └─ YES → modules/
+```
+
+> **Need more guidance?** See [decisions/](./decisions/) for detailed decision frameworks.
+
+---
+
+## Documentation Map
+
+| Topic | Document | When to read |
+| --- | --- | --- |
+| **Understanding Layers** | | |
+| Core layer | [layers/core.md](./layers/core.md) | Setting up foundation code |
+| Shared layer | [layers/shared.md](./layers/shared.md) | Creating reusable utilities |
+| Modules layer | [layers/modules.md](./layers/modules.md) | Building features |
+| **Patterns & How-tos** | | |
+| Barrel exports | [patterns/barrel-exports.md](./patterns/barrel-exports.md) | Defining module public APIs |
+| Cross-module dependencies | [patterns/cross-module-deps.md](./patterns/cross-module-deps.md) | When modules need each other |
+| Naming conventions | [patterns/naming-conventions.md](./patterns/naming-conventions.md) | Naming files, folders, exports |
+| **Decision Making** | | |
+| Decision framework | [decisions/](./decisions/) | Choosing where code belongs |
