@@ -6,5 +6,5 @@ The goal of this architecture is to provide a simple and effective approach to b
 
 ## Table of Contents
 
-- [1. Development Principles](/00-development-principles/README.md)
+- [Development Principles](/00-development-principles/README.md)
 - [Architecture Overview](/01-architecture/README.md)

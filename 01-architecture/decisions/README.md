@@ -95,7 +95,7 @@ Q: What kind of validation?
 
 ```plaintext
 Q: What does it display?
-   - "Avatar with loading state" → shared/ (generic)
+   - Generic loading/avatar component → core/ui/ (design system)
    - "User name with role badge and permissions" → modules/ (business)
 ```
 
