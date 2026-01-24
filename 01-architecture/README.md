@@ -77,6 +77,5 @@ Where does my code belong?
 | **Patterns & How-tos** | | |
 | Barrel exports | [patterns/barrel-exports.md](./patterns/barrel-exports.md) | Defining module public APIs |
 | Cross-module dependencies | [patterns/cross-module-deps.md](./patterns/cross-module-deps.md) | When modules need each other |
-| Naming conventions | [patterns/naming-conventions.md](./patterns/naming-conventions.md) | Naming files, folders, exports |
 | **Decision Making** | | |
 | Decision framework | [decisions/](./decisions/) | Choosing where code belongs |
