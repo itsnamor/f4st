@@ -100,8 +100,6 @@ Each interface is a **contract** between two parties:
 
    "What needs       "What are the       "Team reviews     "Write the
     to be done?"      inputs/outputs?"    the interface"    actual code"
-
-   ⏱️ 10%            ⏱️ 30%              ⏱️ 10%            ⏱️ 50%
 ```
 
 ### Checklist

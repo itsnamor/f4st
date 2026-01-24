@@ -106,8 +106,6 @@ Following YAGNI gives you:
    "Build the        "Does it           "Improve code      "Add features
     simplest          solve the          when patterns      only when
     solution"         problem?"          emerge"            actually needed"
-
-   ⏱️ 40%            ⏱️ 20%             ⏱️ 20%             ⏱️ 20%
 ```
 
 ### Checklist

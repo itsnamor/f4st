@@ -133,19 +133,19 @@ function processProduct(product: Product): ProductResult {
 **The Tension:** DRY encourages extraction, but YAGNI says wait until you need it.
 
 ```plaintext
-┌─────────────────────────────────────────────────────────────┐
-│                   DRY vs. YAGNI                             │
-│                                                             │
-│   DRY says:                    YAGNI says:                  │
-│   "Extract the pattern!"       "Wait, you might not need it"│
-│                                                             │
-│   Resolution: THE RULE OF THREE                             │
-│                                                             │
-│   1st time → Just write it                                  │
-│   2nd time → Note it, but keep separate                     │
-│   3rd time → Now extract (pattern confirmed)                │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                   DRY vs. YAGNI                              │
+│                                                              │
+│   DRY says:                    YAGNI says:                   │
+│   "Extract the pattern!"       "Wait, you might not need it" │
+│                                                              │
+│   Resolution: THE RULE OF THREE                              │
+│                                                              │
+│   1st time → Just write it                                   │
+│   2nd time → Note it, but keep separate                      │
+│   3rd time → Now extract (pattern confirmed)                 │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 **Resolution:** Use the Rule of Three.
