@@ -5,3 +5,6 @@
 The goal of this architecture is to provide a simple and effective approach to building modern web applications, with a focus on **minimizing the learning curve** and **maximizing maintainability**.
 
 ## Table of Contents
+
+- [1. Development Principles](/00-development-principles/README.md)
+- [Architecture Overview](/01-architecture/README.md)
