@@ -47,9 +47,9 @@ Each interface is a **contract** between two parties:
 │                      CONTRACT                           │
 │                                                         │
 │   CALLER                            CALLEE              │
-│   "I will provide the correct  ←→  "I will return the  │
-│    input as agreed"                 correct output as  │
-│                                     promised"          │
+│   "I will provide the correct  ←→  "I will return the   │
+│    input as agreed"                 correct output as   │
+│                                     promised"           │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -305,6 +305,14 @@ const { query, setQuery, results, isSearching } = useSearch({
 
 ## 6. References
 
-- Bertrand Meyer - "Design by Contract" (1986)
-- [TypeScript Handbook - Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)
-- [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+### Philosophy & Methodology
+
+- Bertrand Meyer - ["Design by Contract"](https://en.wikipedia.org/wiki/Design_by_contract) (1986) - The origin of this philosophy
+- Martin Fowler - ["Published Interface"](https://martinfowler.com/bliki/PublishedInterface.html) - On the importance of stable interfaces
+- ["API-First Design"](https://swagger.io/resources/articles/adopting-an-api-first-approach/) - Applying Interface-First to API development
+- ["Contract-First API Design"](https://blog.stoplight.io/api-design-first-vs-code-first) - Design-First vs Code-First comparison
+
+### Books
+
+- "Object-Oriented Software Construction" - Bertrand Meyer (1988)
+- "Clean Architecture" - Robert C. Martin (Chapter on Boundaries & Interfaces)
