@@ -79,7 +79,7 @@ export const apolloClient = new ApolloClient({
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from './client';
 
-export function ApiProvider({ children }: { children: React.ReactNode }) {
+export function ApiProvider({ children }: PropsWithChildren) {
   return (
     <ApolloProvider client={apolloClient}>
       {children}
