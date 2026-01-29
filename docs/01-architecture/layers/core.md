@@ -16,9 +16,9 @@ core/
 ├── api/
 │   ├── client.ts
 │   ├── interceptors.ts
-│   └── generated/
+│   └── __generated__/         ← API hooks only (no business logic)
 ├── ui/
-│   ├── components/
+│   ├── components/            ← Pure, domain-agnostic components
 │   └── theme/
 ├── stores/
 ├── config/
@@ -31,8 +31,8 @@ core/
 | Category | Examples |
 | -------- | -------- |
 | Routing | Router configuration, navigation utilities |
-| API Layer | HTTP client, interceptors, generated queries/mutations/types/hooks |
-| UI | Component library setup, theme, extended components |
+| API Layer | HTTP client, interceptors, generated hooks (thin wrappers, no business logic) |
+| UI | Pure, domain-agnostic components (Button, Input, Modal, etc.) |
 | Styling | Theme tokens, global styles, CSS framework setup |
 | State Management | Store setup, state persistence, hydration logic |
 | Environment | Environment variables, feature flags, runtime config |

@@ -35,11 +35,13 @@ modules/auth/login/
 ├── components/
 │   └── login-form.tsx
 ├── hooks/
-│   └── use-login.ts
+│   └── use-login.ts        ← Wraps core/api hooks with business logic
 ├── api.ts
 ├── types.ts
 └── utils.ts
 ```
+
+> **Note:** Modules wrap `core/api/generated/` hooks to add business logic (validation, transformation, error handling). Don't use generated hooks directly in components.
 
 ## When to Add Code Here
 
