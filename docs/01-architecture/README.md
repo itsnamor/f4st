@@ -54,5 +54,5 @@ src/
 
 **Guides:**
 
-- [Module Public API](./guides/module-public-api.md) - How modules expose functionality
+- [Module Dependencies](./guides/module-dependencies.md) - Public API, dependency rules, sharing code
 - [Splitting Modules](./guides/splitting-modules.md) - When and how to split large modules

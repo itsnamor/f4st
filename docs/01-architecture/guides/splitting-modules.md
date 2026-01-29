@@ -77,7 +77,3 @@ export type { User } from './types'
 - **Premature optimization** - Don't split just because a module might grow
 - **Artificial boundaries** - If split modules would constantly import from each other
 - **Single responsibility** - If the module does one thing well, size is less important
-
-## Rule of Thumb
-
-> If you can't explain what a module does in one sentence, it's probably doing too much.
