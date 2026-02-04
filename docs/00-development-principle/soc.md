@@ -42,25 +42,25 @@ Following SoC provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    WHAT IS A CONCERN?                            │
-│                                                                  │
+│                    WHAT IS A CONCERN?                           │
+│                                                                 │
 │   A concern is a distinct aspect of functionality or behavior.  │
-│                                                                  │
+│                                                                 │
 │   TECHNICAL CONCERNS:                                           │
-│   ├── Data fetching (how to get data)                          │
-│   ├── State management (how to store data)                     │
-│   ├── Presentation (how to display data)                       │
-│   ├── Validation (how to verify data)                          │
-│   ├── Error handling (how to handle failures)                  │
-│   ├── Logging (how to record events)                           │
-│   └── Authentication (how to verify identity)                  │
-│                                                                  │
+│   ├── Data fetching (how to get data)                           │
+│   ├── State management (how to store data)                      │
+│   ├── Presentation (how to display data)                        │
+│   ├── Validation (how to verify data)                           │
+│   ├── Error handling (how to handle failures)                   │
+│   ├── Logging (how to record events)                            │
+│   └── Authentication (how to verify identity)                   │
+│                                                                 │
 │   BUSINESS CONCERNS:                                            │
-│   ├── User management (registration, profiles, permissions)    │
-│   ├── Order processing (cart, checkout, fulfillment)           │
-│   ├── Payment handling (billing, refunds, subscriptions)       │
-│   ├── Notifications (email, push, SMS)                         │
-│   └── Analytics (tracking, reporting, dashboards)              │
+│   ├── User management (registration, profiles, permissions)     │
+│   ├── Order processing (cart, checkout, fulfillment)            │
+│   ├── Payment handling (billing, refunds, subscriptions)        │
+│   ├── Notifications (email, push, SMS)                          │
+│   └── Analytics (tracking, reporting, dashboards)               │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -69,29 +69,29 @@ Following SoC provides:
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
 │               HORIZONTAL SEPARATION (LAYERS)                    │
-│                                                                  │
+│                                                                 │
 │   Separates by TECHNICAL responsibility                         │
-│                                                                  │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │                   PRESENTATION LAYER                     │   │
+│   │                   PRESENTATION LAYER                    │   │
 │   │         Components, Pages, Styling, User Input          │   │
 │   ├─────────────────────────────────────────────────────────┤   │
-│   │                   APPLICATION LAYER                      │   │
+│   │                   APPLICATION LAYER                     │   │
 │   │          Use Cases, Orchestration, Validation           │   │
 │   ├─────────────────────────────────────────────────────────┤   │
-│   │                     DOMAIN LAYER                         │   │
+│   │                     DOMAIN LAYER                        │   │
 │   │         Business Rules, Entities, Value Objects         │   │
 │   ├─────────────────────────────────────────────────────────┤   │
-│   │                 INFRASTRUCTURE LAYER                     │   │
+│   │                 INFRASTRUCTURE LAYER                    │   │
 │   │           Database, APIs, External Services             │   │
 │   └─────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
-│                VERTICAL SEPARATION (FEATURES)                    │
-│                                                                  │
+│                VERTICAL SEPARATION (FEATURES)                   │
+│                                                                 │
 │   Separates by BUSINESS domain                                  │
-│                                                                  │
+│                                                                 │
 │   ┌───────────────┬───────────────┬───────────────┐             │
 │   │     USERS     │    ORDERS     │   PAYMENTS    │             │
 │   │   Feature     │    Feature    │    Feature    │             │
@@ -111,52 +111,52 @@ Following SoC provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    COHESION & COUPLING                           │
-│                                                                  │
+│                    COHESION & COUPLING                          │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │  HIGH COHESION (GOOD)                                    │   │
-│   │                                                          │   │
+│   │  HIGH COHESION (GOOD)                                   │   │
+│   │                                                         │   │
 │   │  Everything in a module is closely related.             │   │
 │   │  The module does ONE thing well.                        │   │
-│   │                                                          │   │
-│   │  UserService:                                            │   │
-│   │    ✅ createUser()                                       │   │
-│   │    ✅ updateUser()                                       │   │
-│   │    ✅ deleteUser()                                       │   │
-│   │    ✅ getUserById()                                      │   │
+│   │                                                         │   │
+│   │  UserService:                                           │   │
+│   │    ✅ createUser()                                      │   │
+│   │    ✅ updateUser()                                      │   │
+│   │    ✅ deleteUser()                                      │   │
+│   │    ✅ getUserById()                                     │   │
 │   └─────────────────────────────────────────────────────────┘   │
-│                                                                  │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │  LOW COHESION (BAD)                                      │   │
-│   │                                                          │   │
+│   │  LOW COHESION (BAD)                                     │   │
+│   │                                                         │   │
 │   │  Module does many unrelated things.                     │   │
-│   │                                                          │   │
-│   │  UtilityService:                                         │   │
-│   │    ❌ createUser()                                       │   │
-│   │    ❌ sendEmail()                                        │   │
-│   │    ❌ formatCurrency()                                   │   │
-│   │    ❌ validateOrder()                                    │   │
+│   │                                                         │   │
+│   │  UtilityService:                                        │   │
+│   │    ❌ createUser()                                      │   │
+│   │    ❌ sendEmail()                                       │   │
+│   │    ❌ formatCurrency()                                  │   │
+│   │    ❌ validateOrder()                                   │   │
 │   └─────────────────────────────────────────────────────────┘   │
-│                                                                  │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │  LOW COUPLING (GOOD)                                     │   │
-│   │                                                          │   │
+│   │  LOW COUPLING (GOOD)                                    │   │
+│   │                                                         │   │
 │   │  Modules are independent. Changes don't cascade.        │   │
-│   │                                                          │   │
+│   │                                                         │   │
 │   │  UserService ──interface──▶ EmailService                │   │
-│   │       │                                                  │   │
+│   │       │                                                 │   │
 │   │       └── Can swap EmailService for SMSService easily   │   │
 │   └─────────────────────────────────────────────────────────┘   │
-│                                                                  │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │  HIGH COUPLING (BAD)                                     │   │
-│   │                                                          │   │
+│   │  HIGH COUPLING (BAD)                                    │   │
+│   │                                                         │   │
 │   │  Modules deeply intertwined. Changes break everything.  │   │
-│   │                                                          │   │
+│   │                                                         │   │
 │   │  UserService ──────────────▶ EmailService               │   │
-│   │       │                           │                      │   │
-│   │       ├──────────────────────────▶│                      │   │
-│   │       │                           │                      │   │
+│   │       │                           │                     │   │
+│   │       ├──────────────────────────▶│                     │   │
+│   │       │                           │                     │   │
 │   │       └── Knows internal details of EmailService        │   │
 │   └─────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘

@@ -42,10 +42,10 @@ Following Immutability provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    MUTABLE OPERATIONS (AVOID)                    │
-│                                                                  │
+│                    MUTABLE OPERATIONS (AVOID)                   │
+│                                                                 │
 │   These MODIFY the original data:                               │
-│                                                                  │
+│                                                                 │
 │   Arrays:                                                       │
 │   ❌ array.push(item)      - adds to end                        │
 │   ❌ array.pop()           - removes from end                   │
@@ -55,7 +55,7 @@ Following Immutability provides:
 │   ❌ array.sort()          - sorts in place                     │
 │   ❌ array.reverse()       - reverses in place                  │
 │   ❌ array[i] = value      - direct assignment                  │
-│                                                                  │
+│                                                                 │
 │   Objects:                                                      │
 │   ❌ object.key = value    - direct property assignment         │
 │   ❌ delete object.key     - removes property                   │
@@ -92,11 +92,11 @@ Following Immutability provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    STRUCTURAL SHARING                            │
-│                                                                  │
+│                    STRUCTURAL SHARING                           │
+│                                                                 │
 │   Immutable updates don't copy everything - they SHARE          │
 │   unchanged parts with the original.                            │
-│                                                                  │
+│                                                                 │
 │   Original State:                                               │
 │   ┌──────────────────────────────────────┐                      │
 │   │  state = {                           │                      │
@@ -114,7 +114,7 @@ Following Immutability provides:
 │   │    settings: { theme: 'light' }      │ ← NEW object         │
 │   │  }                                   │                      │
 │   └──────────────────────────────────────┘                      │
-│                                                                  │
+│                                                                 │
 │   Only the changed path gets new objects.                       │
 │   Memory efficient! Performance efficient!                      │
 └─────────────────────────────────────────────────────────────────┘
@@ -124,22 +124,22 @@ Following Immutability provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                CHEAP CHANGE DETECTION                            │
-│                                                                  │
+│                CHEAP CHANGE DETECTION                           │
+│                                                                 │
 │   With immutability, checking if something changed is O(1):     │
-│                                                                  │
+│                                                                 │
 │   // Mutable world - need deep comparison 😢                    │
 │   function hasChanged(prev, next) {                             │
 │     return JSON.stringify(prev) !== JSON.stringify(next);       │
 │     // Slow! O(n) where n is the size of the object             │
 │   }                                                             │
-│                                                                  │
+│                                                                 │
 │   // Immutable world - reference comparison 😊                  │
 │   function hasChanged(prev, next) {                             │
 │     return prev !== next;                                       │
 │     // Fast! O(1) constant time                                 │
 │   }                                                             │
-│                                                                  │
+│                                                                 │
 │   This is why React's reconciliation is fast!                   │
 │   If reference is the same, skip re-rendering.                  │
 └─────────────────────────────────────────────────────────────────┘

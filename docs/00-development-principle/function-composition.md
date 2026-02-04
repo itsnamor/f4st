@@ -41,22 +41,22 @@ Following Function Composition provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    FUNCTION COMPOSITION                          │
-│                                                                  │
+│                    FUNCTION COMPOSITION                         │
+│                                                                 │
 │   Composition: Combine functions where output flows to input    │
-│                                                                  │
+│                                                                 │
 │   Given: f(x) and g(x)                                          │
 │   Compose: (f ∘ g)(x) = f(g(x))                                 │
-│                                                                  │
+│                                                                 │
 │   ┌───────┐      ┌───────┐      ┌───────┐                       │
 │   │ Input │ ───▶ │  f()  │ ───▶ │  g()  │ ───▶ Output           │
 │   └───────┘      └───────┘      └───────┘                       │
-│                                                                  │
+│                                                                 │
 │   Example:                                                      │
 │   const addOne = x => x + 1                                     │
 │   const double = x => x * 2                                     │
 │   const addOneThenDouble = compose(double, addOne)              │
-│                                                                  │
+│                                                                 │
 │   addOneThenDouble(5) = double(addOne(5)) = double(6) = 12      │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -65,27 +65,27 @@ Following Function Composition provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PIPE vs COMPOSE                               │
-│                                                                  │
-│   PIPE: Left-to-right (more intuitive for most developers)     │
+│                    PIPE vs COMPOSE                              │
+│                                                                 │
+│   PIPE: Left-to-right (more intuitive for most developers)      │
 │   ────────────────────────────────────────────────────────      │
 │   pipe(f, g, h)(x) = h(g(f(x)))                                 │
-│                                                                  │
+│                                                                 │
 │   Read as: "Take x, apply f, then g, then h"                    │
-│                                                                  │
-│   x ──▶ f() ──▶ g() ──▶ h() ──▶ result                         │
-│                                                                  │
-│                                                                  │
+│                                                                 │
+│   x ──▶ f() ──▶ g() ──▶ h() ──▶ result                          │
+│                                                                 │
+│                                                                 │
 │   COMPOSE: Right-to-left (mathematical convention)              │
 │   ────────────────────────────────────────────────────────      │
 │   compose(f, g, h)(x) = f(g(h(x)))                              │
-│                                                                  │
+│                                                                 │
 │   Read as: "f of g of h of x"                                   │
-│                                                                  │
-│   result ◀── f() ◀── g() ◀── h() ◀── x                         │
-│                                                                  │
-│                                                                  │
-│   💡 TIP: Use PIPE for readability - it matches how we read    │
+│                                                                 │
+│   result ◀── f() ◀── g() ◀── h() ◀── x                          │
+│                                                                 │
+│                                                                 │
+│   💡 TIP: Use PIPE for readability - it matches how we read     │
 │   code (left to right, top to bottom).                          │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -94,20 +94,20 @@ Following Function Composition provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│              REQUIREMENTS FOR COMPOSABLE FUNCTIONS               │
-│                                                                  │
+│              REQUIREMENTS FOR COMPOSABLE FUNCTIONS              │
+│                                                                 │
 │   1. PURE FUNCTIONS                                             │
 │      No side effects, same input → same output                  │
 │      (Impure functions break the pipeline)                      │
-│                                                                  │
+│                                                                 │
 │   2. SINGLE RESPONSIBILITY                                      │
 │      Each function does ONE thing well                          │
 │      (Complex functions are hard to compose)                    │
-│                                                                  │
+│                                                                 │
 │   3. TYPE ALIGNMENT                                             │
 │      Output type of f must match input type of g                │
-│      f: A → B, g: B → C, then pipe(f, g): A → C                │
-│                                                                  │
+│      f: A → B, g: B → C, then pipe(f, g): A → C                 │
+│                                                                 │
 │   4. UNARY PREFERENCE                                           │
 │      Functions taking one argument compose most easily          │
 │      (Use currying for multi-argument functions)                │

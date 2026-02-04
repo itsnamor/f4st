@@ -41,28 +41,28 @@ Following YAGNI provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                  UNUSED CODE IS NOT FREE                         │
-│                                                                  │
+│                  UNUSED CODE IS NOT FREE                        │
+│                                                                 │
 │   Every line of code has ongoing costs:                         │
-│                                                                  │
+│                                                                 │
 │   📖 READING COST                                               │
 │      Developers must read and understand it                     │
-│                                                                  │
+│                                                                 │
 │   🔧 MAINTENANCE COST                                           │
 │      Must be updated when dependencies change                   │
-│                                                                  │
+│                                                                 │
 │   🧪 TESTING COST                                               │
 │      Should be tested, even if unused                           │
-│                                                                  │
+│                                                                 │
 │   🔄 REFACTORING COST                                           │
 │      Must be considered during any refactoring                  │
-│                                                                  │
+│                                                                 │
 │   🐛 BUG RISK                                                   │
 │      More code = more potential bugs                            │
-│                                                                  │
+│                                                                 │
 │   ⏱️ BUILD TIME                                                 │
 │      Adds to compilation and bundle size                        │
-│                                                                  │
+│                                                                 │
 │   "The best code is no code at all." — Jeff Atwood              │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -71,20 +71,20 @@ Following YAGNI provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                   SPECULATIVE GENERALITY                         │
-│                                                                  │
+│                   SPECULATIVE GENERALITY                        │
+│                                                                 │
 │   Common phrases that signal YAGNI violations:                  │
-│                                                                  │
+│                                                                 │
 │   ❌ "We might need this later..."                              │
 │   ❌ "What if someday we want to..."                            │
 │   ❌ "Let's make it configurable just in case..."               │
 │   ❌ "It's easy to add now, harder later..."                    │
 │   ❌ "Other projects might want to use this..."                 │
 │   ❌ "Let's build a plugin system for flexibility..."           │
-│                                                                  │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │                    THE REALITY                           │   │
-│   │                                                          │   │
+│   │                    THE REALITY                          │   │
+│   │                                                         │   │
 │   │   • 80% of "future features" never get built            │   │
 │   │   • Requirements change - your guess is likely wrong    │   │
 │   │   • When you DO need it, you'll understand it better    │   │
@@ -97,8 +97,8 @@ Following YAGNI provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│                    YAGNI APPLIES TO                              │
-│                                                                  │
+│                    YAGNI APPLIES TO                             │
+│                                                                 │
 │   ✅ Features and functionality                                 │
 │   ✅ Configuration options                                      │
 │   ✅ Abstraction layers                                         │
@@ -107,8 +107,8 @@ Following YAGNI provides:
 └─────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
-│                  YAGNI DOES NOT APPLY TO                         │
-│                                                                  │
+│                  YAGNI DOES NOT APPLY TO                        │
+│                                                                 │
 │   ❌ Security measures (always needed)                          │
 │   ❌ Error handling (always needed)                             │
 │   ❌ Accessibility (always needed)                              │

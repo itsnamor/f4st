@@ -39,23 +39,23 @@ Following DRY provides:
 ### Knowledge vs Code Duplication
 
 ```plaintext
-┌─────────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────────┐
 │                    CRITICAL DISTINCTION                          │
 │                                                                  │
-│   DRY is about KNOWLEDGE, not CODE.                             │
+│   DRY is about KNOWLEDGE, not CODE.                              │
 │                                                                  │
-│   ┌─────────────────────────────────────────────────────────┐   │
-│   │  Same Code, Different Knowledge = ✅ ACCEPTABLE          │   │
-│   │                                                          │   │
-│   │  // These look identical but represent different rules   │   │
-│   │  const validateAge = (age) => age >= 18;     // Legal    │   │
-│   │  const validateScore = (score) => score >= 18; // Passing │   │
-│   │                                                          │   │
-│   │  If legal age changes to 21, passing score stays 18.     │   │
-│   │  They happen to look the same NOW but are different.     │   │
-│   └─────────────────────────────────────────────────────────┘   │
+│   ┌───────────────────────────────────────────────────────────┐  │
+│   │  Same Code, Different Knowledge = ✅ ACCEPTABLE           │  │
+│   │                                                           │  │
+│   │  // These look identical but represent different rules    │  │
+│   │  const validateAge = (age) => age >= 18;     // Legal     │  │
+│   │  const validateScore = (score) => score >= 18; // Passing │  │
+│   │                                                           │  │
+│   │  If legal age changes to 21, passing score stays 18.      │  │
+│   │  They happen to look the same NOW but are different.      │  │
+│   └───────────────────────────────────────────────────────────┘  │
 │                                                                  │
-│   ┌─────────────────────────────────────────────────────────┐   │
+│   ┌─────────────────────────────────────────────────────────┐    │
 │   │  Same Knowledge, Different Places = ❌ VIOLATION         │   │
 │   │                                                          │   │
 │   │  // user-form.ts                                         │   │
@@ -65,8 +65,8 @@ Following DRY provides:
 │   │  const checkEmail = (e) => /^[^\s@]+@[^\s@]+$/.test(e);  │   │
 │   │                                                          │   │
 │   │  Both represent "what is a valid email" - same knowledge │   │
-│   └─────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────┘
+│   └──────────────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ### Types of Duplication
@@ -216,7 +216,7 @@ const fetchOrders = (userId: string) => apiRequest<Order[]>(`/orders?userId=${us
 
 ```typescript
 // registration-form.tsx
-const RegistrationForm = () => {
+function RegistrationForm(){
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -229,7 +229,7 @@ const RegistrationForm = () => {
 };
 
 // profile-form.tsx
-const ProfileForm = () => {
+function ProfileForm() {
   const isEmailValid = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -237,7 +237,7 @@ const ProfileForm = () => {
 };
 
 // checkout-form.tsx
-const CheckoutForm = () => {
+function CheckoutForm(){
   const checkEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
   // ...
 };
@@ -280,7 +280,7 @@ export const validationMessages = {
 // registration-form.tsx
 import { validators, validationMessages } from '@/lib/validators';
 
-const RegistrationForm = () => {
+function RegistrationForm() {
   const [email, setEmail] = useState('');
   const isEmailValid = validators.email(email);
   // ...

@@ -117,30 +117,30 @@ Following Pure Functions provides:
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────────┐
-│           FUNCTIONAL CORE / IMPERATIVE SHELL                     │
-│                                                                  │
+│           FUNCTIONAL CORE / IMPERATIVE SHELL                    │
+│                                                                 │
 │   Structure your application with:                              │
-│   • A PURE CORE of business logic (no side effects)            │
-│   • An IMPURE SHELL at the boundaries (handles I/O)            │
-│                                                                  │
+│   • A PURE CORE of business logic (no side effects)             │
+│   • An IMPURE SHELL at the boundaries (handles I/O)             │
+│                                                                 │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │                   IMPURE SHELL                           │   │
+│   │                   IMPURE SHELL                          │   │
 │   │     (handles I/O, network, database, user input)        │   │
-│   │                                                          │   │
+│   │                                                         │   │
 │   │   ┌─────────────────────────────────────────────────┐   │   │
-│   │   │                  PURE CORE                       │   │   │
-│   │   │                                                  │   │   │
+│   │   │                  PURE CORE                      │   │   │
+│   │   │                                                 │   │   │
 │   │   │    Business logic, calculations, transforms     │   │   │
 │   │   │    Validations, formatting, filtering           │   │   │
-│   │   │                                                  │   │   │
-│   │   │    ✅ Easy to test                               │   │   │
-│   │   │    ✅ Easy to reason about                       │   │   │
-│   │   │    ✅ Safe to refactor                           │   │   │
+│   │   │                                                 │   │   │
+│   │   │    ✅ Easy to test                              │   │   │
+│   │   │    ✅ Easy to reason about                      │   │   │
+│   │   │    ✅ Safe to refactor                          │   │   │
 │   │   └─────────────────────────────────────────────────┘   │   │
-│   │                                                          │   │
+│   │                                                         │   │
 │   └─────────────────────────────────────────────────────────┘   │
-│                                                                  │
-│   The shell calls pure functions, handles their results,       │
+│                                                                 │
+│   The shell calls pure functions, handles their results,        │
 │   and performs necessary side effects.                          │
 └─────────────────────────────────────────────────────────────────┘
 ```
