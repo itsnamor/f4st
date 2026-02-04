@@ -13,7 +13,7 @@ Feature layer. Contains business logic and cross-cutting functionality organized
 
 ```plaintext
 modules/
-├── auth/                    ← Group folder
+├── auth/                   ← Group folder
 │   ├── login/              ← Module
 │   ├── register/           ← Module
 │   └── forgot-password/    ← Module
@@ -40,8 +40,6 @@ modules/auth/login/
 ├── types.ts
 └── utils.ts
 ```
-
-> **Note:** Modules wrap `core/api/generated/` hooks to add business logic (validation, transformation, error handling). Don't use generated hooks directly in components.
 
 ## When to Add Code Here
 
